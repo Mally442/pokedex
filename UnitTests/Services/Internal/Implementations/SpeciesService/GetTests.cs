@@ -58,7 +58,6 @@ namespace UnitTests.Services.Internal.Implementations.SpeciesService
             var speciesInternal = await _speciesService.Get("mewtwo");
 
             // Assert
-            
             Assert.IsNull(speciesInternal);
             _pokemonService.Verify(e => e.Get(It.IsAny<string>()), Times.Once);
             _translationFactory.Verify(e => e.CreateService(It.IsAny<global::Services.Internal.Models.Species>()), Times.Never);
@@ -90,7 +89,6 @@ namespace UnitTests.Services.Internal.Implementations.SpeciesService
             var speciesInternal = await _speciesService.Get("mewtwo");
 
             // Assert
-
             Assert.IsNull(speciesInternal);
             _pokemonService.Verify(e => e.Get(It.IsAny<string>()), Times.Once);
             _translationFactory.Verify(e => e.CreateService(It.IsAny<global::Services.Internal.Models.Species>()), Times.Never);
@@ -136,7 +134,6 @@ namespace UnitTests.Services.Internal.Implementations.SpeciesService
             var speciesInternal = await _speciesService.Get("mewtwo");
 
             // Assert
-
             Assert.AreEqual("mewtwo description", speciesInternal.Description);
             _pokemonService.Verify(e => e.Get(It.IsAny<string>()), Times.Once);
             _translationFactory.Verify(e => e.CreateService(It.IsAny<global::Services.Internal.Models.Species>()), Times.Never);
@@ -144,7 +141,7 @@ namespace UnitTests.Services.Internal.Implementations.SpeciesService
         }
 
         /// <summary>
-        /// When the Pokemon service returns an object
+        /// When the Translation service fails to return a translation
         /// </summary>
         [Test]
         public async Task WhenTranslatedTextIsEmpty()
@@ -182,7 +179,6 @@ namespace UnitTests.Services.Internal.Implementations.SpeciesService
             var speciesInternal = await _speciesService.Get("mewtwo", true);
 
             // Assert
-
             Assert.AreEqual("mewtwo description", speciesInternal.Description);
             _pokemonService.Verify(e => e.Get(It.IsAny<string>()), Times.Once);
             _translationFactory.Verify(e => e.CreateService(It.IsAny<global::Services.Internal.Models.Species>()), Times.Once);
@@ -190,7 +186,7 @@ namespace UnitTests.Services.Internal.Implementations.SpeciesService
         }
 
         /// <summary>
-        /// When the Pokemon service returns an object
+        /// When the Translation service succeeds in returning a translation
         /// </summary>
         [Test]
         public async Task WhenTranslatedTextIsNotEmpty()
@@ -228,7 +224,6 @@ namespace UnitTests.Services.Internal.Implementations.SpeciesService
             var speciesInternal = await _speciesService.Get("mewtwo", true);
 
             // Assert
-
             Assert.AreEqual("translated text", speciesInternal.Description);
             _pokemonService.Verify(e => e.Get(It.IsAny<string>()), Times.Once);
             _translationFactory.Verify(e => e.CreateService(It.IsAny<global::Services.Internal.Models.Species>()), Times.Once);
