@@ -24,6 +24,6 @@ These are the instructions on how to run the API and unit tests. You'll need Vis
 
 **Things I would add if this was a production API**
 - Error logging
-- Returning more meaningful statuses/error messages than just 404 NOT FOUND if some other error occurs (specifically with the external requests)
+- Returning more meaningful statuses/error messages other than just 404 NOT FOUND if some other error occurs (specifically with the external requests)
 - A caching mechanism
 - Rate limiting
